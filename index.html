@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shruthi S - AI & Data Science Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #01060a;
+            color: #1f2937;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .section-heading {
+            border-bottom: 2px solid #060a11;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+        .icon-link {
+            color: #4b5563;
+            transition: color 0.3s ease;
+        }
+        .icon-link:hover {
+            color: #2563eb;
+        }
+        .project-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .tech-pill {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Parallax effects */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Skill icons background */
+        .skills-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            background-image: 
+                radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 30px 30px;
+            background-position: 0 0, 25px 25px;
+        }
+        
+        /* Quote styling */
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #1e40af;
+            text-align: center;
+            margin: 2rem auto;
+            padding: 10px 20px;
+            width: fit-content;
+            background-color: #dbeafe;
+            border-radius: 8px;
+        }
+        
+        /* Profile image styling */
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 3%;
+            border-radius: 50%;
+            display: block;
+            overflow: hidden;
+            border: none;
+        }
+        
+        /* Animation for quotes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        /* Section styling with header effect */
+        .section-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+            color: white;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 0 1.5rem 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Adjusting the hero header text color to white for better contrast */
+        .hero-header {
+            color: white;
+        }
+        
+        /* Skill icon animations */
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #4b5563;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .skill-icon:hover {
+            color: #2563eb;
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* Floating elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Skill badges background pattern */
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            margin: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Timeline for experience */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #2563eb;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="parallax skills-bg text-white py-16 px-4 md:px-8 lg:px-16 rounded-b-3xl shadow-xl">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="text-center md:text-left mb-8 md:mb-0 hero-header">
+                <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                    SHRUTHI S
+                </h1>
+                <p class="text-xl lg:text-2xl font-light mb-6 opacity-90">
+                    AI Engineer & Developer | Specializing in Data-Driven Solutions
+                </p>
+                <div class="quote fade-in">
+                    <p>"Innovate with purpose"</p>
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+                    <a href="#contact" class="btn-primary flex items-center gap-2">
+                        <i class="fas fa-envelope"></i> Get in Touch
+                    </a>
+                    <a href="Shruthi_S_Resume.pdf" download="Shruthi_S_Resume.pdf" class="btn-primary bg-gray-700 hover:bg-gray-800 flex items-center gap-2">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+            <div class="w-48 h-48 md:w-64 md:h-64 bg-gray-300 rounded-full flex items-center justify-center overflow-hidden shadow-lg border-4 border-white floating">
+                <img src="image.jpg" alt="Shruthi S" class="profile-img">
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 lg:py-20">
+
+        <section id="about" class="mb-16">
+            <div class="section-header text-center">
+                <h2 class="text-3xl font-bold mb-2">About Me</h2>
+                <p class="text-xl font-light opacity-90">Passionate about AI & Data Science</p>
+            </div>
+            <div class="card p-8">
+                <p class="text-lg leading-relaxed text-gray-700">
+                    A proactive and analytical Computer Science Engineer with specialized expertise in Artificial Intelligence and Data Science. Proven ability to leverage Python, machine learning algorithms, and full-stack development principles to design, build, and deploy data-driven software solutions. A collaborative team player dedicated to applying technical skills to solve complex problems and deliver measurable, impactful results.
+                </p>
+            </div>
+            <div class="quote fade-in mt-8">
+                <p>"Data tells stories"</p>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-16">
+            <div class="section-header text-center">
+                <h2 class="text-3xl font-bold mb-2">My Skills</h2>
+                <p class="text-xl font-light opacity-90">Technologies I work with</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center mb-12">
+                <div class="skill-badge"><i class="fab fa-python skill-icon"></i></div>
+                <div class="skill-badge"><i class="fab fa-java skill-icon"></i></div>
+                <div class="skill-badge"><i class="fas fa-database skill-icon"></i></div>
+                <div class="skill-badge"><i class="fab fa-html5 skill-icon"></i></div>
+                <div class="skill-badge"><i class="fab fa-css3-alt skill-icon"></i></div>
+                <div class="skill-badge"><i class="fab fa-js skill-icon"></i></div>
+                <div class="skill-badge"><i class="fab fa-react skill-icon"></i></div>
+                <div class="skill-badge"><i class="fab fa-node skill-icon"></i></div>
+                <div class="skill-badge"><i class="fas fa-brain skill-icon"></i></div>
+                <div class="skill-badge"><i class="fas fa-robot skill-icon"></i></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2"><i class="fas fa-code"></i> Technical Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Java</span>
+                        <span class="tech-pill">C</span>
+                        <span class="tech-pill">Oracle APEX</span>
+                        <span class="tech-pill">Full-Stack Development (HTML, CSS, React, Node.js, PHP)</span>
+                        <span class="tech-pill">SQL</span>
+                        <span class="tech-pill">Machine Learning</span>
+                        <span class="tech-pill">Gen AI</span>
+                        <span class="tech-pill">Database Systems</span>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2"><i class="fas fa-chart-line"></i> Analytical Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">Data Analysis</span>
+                        <span class="tech-pill">Pandas</span>
+                        <span class="tech-pill">NumPy</span>
+                        <span class="tech-pill">Scikit-learn</span>
+                        <span class="tech-pill">TensorFlow</span>
+                        <span class="tech-pill">Keras</span>
+                        <span class="tech-pill">PyTorch</span>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2"><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">Communication</span>
+                        <span class="tech-pill">Team Collaboration</span>
+                        <span class="tech-pill">Leadership</span>
+                        <span class="tech-pill">Analytical Thinking</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-16">
+            <div class="section-header text-center">
+                <h2 class="text-3xl font-bold mb-2">Featured Projects</h2>
+                <p class="text-xl font-light opacity-90">My recent work</p>
+            </div>
+            <div class="space-y-10">
+                <div class="project-card">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-3">Secure Password Manager</h3>
+                    <p class="text-gray-600 mb-4">
+                        A robust application designed to securely manage user passwords, developed during my Python Developer Internship.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <span class="font-semibold text-gray-600">Role:</span> <span class="tech-pill">Python Developer Intern</span>
+                        <span class="font-semibold text-gray-600">Tools:</span> <span class="tech-pill">Python</span><span class="tech-pill">Flask</span><span class="tech-pill">SQLAlchemy</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                        <li>Built a secure password manager implementing user authentication and password encryption.</li>
+                        <li>Designed and implemented CRUD (Create, Read, Update, Delete) operations for password management using SQLAlchemy.</li>
+                        <li>Enhanced data security and user privacy through robust encryption techniques.</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-3">Collaborative Website for Hospitality Businesses</h3>
+                    <p class="text-gray-600 mb-4">
+                        Contributed to a dynamic web platform aimed at enhancing customer interaction for cafes, hotels, and restaurants.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <span class="font-semibold text-gray-600">Role:</span> <span class="tech-pill">Software Development Intern</span>
+                        <span class="font-semibold text-gray-600">Website:</span> <a href="https://lavender.gardencityuniversity.online/" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:underline tech-pill">lavender.gardencityuniversity.online</a>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                        <li>Collaborated on frontend and backend development to create an intuitive user experience.</li>
+                        <li>Focused on features that streamline customer interaction and service delivery for hospitality businesses.</li>
+                        <li>Gained hands-on experience in full-stack development within a team environment.</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-3">SkillSwap Application</h3>
+                    <p class="text-gray-600 mb-4">
+                        Developed an application to facilitate skill-sharing among users using Oracle APEX.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <span class="font-semibold text-gray-600">Role:</span> <span class="tech-pill">Software Development Intern</span>
+                        <span class="font-semibold text-gray-600">Tools:</span> <span class="tech-pill">Oracle APEX</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                        <li>Designed and implemented the core functionalities of the SkillSwap platform.</li>
+                        <li>Utilized Oracle APEX for rapid application development and database integration.</li>
+                        <li>Enabled users to offer and request skills, fostering community and learning.</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-3">Personal Portfolio Webpage</h3>
+                    <p class="text-gray-600 mb-4">
+                        Created a personal portfolio webpage showcasing skills and projects, focusing on responsive design and modern web practices.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <span class="font-semibold text-gray-600">Role:</span> <span class="tech-pill">Web Development Intern</span>
+                        <span class="font-semibold text-gray-600">Tools:</span> <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Node.js</span><span class="tech-pill">PHP</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                        <li>Developed a responsive and visually appealing personal portfolio from scratch.</li>
+                        <li>Integrated frontend with backend functionalities using Node.js for server-side logic and PHP.</li>
+                        <li>Demonstrated proficiency in core web development technologies.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="quote fade-in mt-8">
+                <p>"Build with passion"</p>
+            </div>
+        </section>
+
+        <section id="experience" class="mb-16">
+            <div class="section-header text-center">
+                <h2 class="text-3xl font-bold mb-2">Work Experience</h2>
+                <p class="text-xl font-light opacity-90">My professional journey</p>
+            </div>
+            <div class="space-y-8">
+                <div class="card p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-700">Python Developer Intern</h3>
+                            <p class="text-md text-gray-600">Techplement - Remote</p>
+                        </div>
+                        <span class="text-sm text-gray-500">02/2025 - 03/2025</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                        <li>Built a secure password manager using Python and Flask, implementing user authentication, password encryption, and CRUD operations with SQLAlchemy.</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-700">Software Development Intern</h3>
+                            <p class="text-md text-gray-600">Nerds and Geeks Company</p>
+                        </div>
+                        <span class="text-sm text-gray-500">12/2024 - 02/2025</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                        <li>Collaborated on a website for cafés, hotels, and restaurants to enhance customer interaction.</li>
+                        <li>Developed the SkillSwap application using Oracle APEX to enhance skill-sharing among users.</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-700">Web Development Intern</h3>
+                            <p class="text-md text-gray-600">OctaNet Services Pvt Ltd</p>
+                        </div>
+                        <span class="text-sm text-gray-500">01/2024 - 01/2024</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                        <li>Developed a personal portfolio webpage using HTML, CSS, and JavaScript.</li>
+                        <li>Integrated frontend and backend functionalities using Node.js and PHP.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="mb-16">
+            <div class="section-header text-center">
+                <h2 class="text-3xl font-bold mb-2">Education</h2>
+                <p class="text-xl font-light opacity-90">My academic background</p>
+            </div>
+            <div class="card p-6">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700">Bachelor of Technology: Computer Science and Engineering (Data Science)</h3>
+                        <p class="text-md text-gray-600">Garden City University - Bangalore</p>
+                    </div>
+                    <span class="text-sm text-gray-500">Expected in 03/2026</span>
+                </div>
+                <p class="text-gray-700 leading-relaxed">
+                    Focus: Data Structures, Machine Learning, Gen AI, and Database Systems.
+                </p>
+                <p class="text-gray-700 leading-relaxed mt-2">
+                    Relevant Skills: Python, Full-Stack Development (HTML, CSS, React, Node.js), SQL.
+                </p>
+            </div>
+        </section>
+
+        <section id="certifications" class="mb-16">
+            <div class="section-header text-center">
+                <h2 class="text-3xl font-bold mb-2">Certifications</h2>
+                <p class="text-xl font-light opacity-90">My credentials</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card p-6 flex items-center gap-4">
+                    <i class="fas fa-certificate text-blue-600 text-3xl"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Cisco Certifications</h3>
+                        <p class="text-gray-600">Cyber Security, Python Programming Essentials, Network Support and Security, Linux</p>
+                    </div>
+                </div>
+                <div class="card p-6 flex items-center gap-4">
+                    <i class="fas fa-certificate text-blue-600 text-3xl"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Accenture: Forage Data Analytics</h3>
+                    </div>
+                </div>
+                <div class="card p-6 flex items-center gap-4">
+                    <i class="fas fa-certificate text-blue-600 text-3xl"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Octanet: Web Development Intern</h3>
+                    </div>
+                </div>
+                <div class="card p-6 flex items-center gap-4">
+                    <i class="fas fa-certificate text-blue-600 text-3xl"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Coursera: Effective Communication, Business Writing</h3>
+                    </div>
+                </div>
+                <div class="card p-6 flex items-center gap-4">
+                    <i class="fas fa-certificate text-blue-600 text-3xl"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Future Skill Prime (NASSCOM): Fundamentals in Data Analytics</h3>
+                    </div>
+                </div>
+                <div class="card p-6 flex items-center gap-4">
+                    <i class="fas fa-certificate text-blue-600 text-3xl"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Besant Technologies: Python Programming</h3>
+                    </div>
+                </div>
+                <div class="card p-6 flex items-center gap-4">
+                    <i class="fas fa-certificate text-blue-600 text-3xl"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">HP Certifications</h3>
+                        <p class="text-gray-600">Design Thinking, Data Analytics, Agile Methodology, Digital Marketing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="quote fade-in mt-8">
+                <p>"Learn continuously"</p>
+            </div>
+        </section>
+
+        <section id="contact" class="mb-16 text-center">
+            <div class="section-header text-center">
+                <h2 class="text-3xl font-bold mb-2">Get In Touch</h2>
+                <p class="text-xl font-light opacity-90">Let's connect</p>
+            </div>
+            <div class="card p-8 max-w-2xl mx-auto">
+                <p class="text-lg text-gray-700 mb-6">
+                    I'm always open to discussing new projects, collaborations, or opportunities. Feel free to reach out!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-blue-600 text-2xl"></i>
+                        <a href="mailto:sm.shruthi2004@gmail.com" class="text-gray-700 hover:text-blue-600 text-lg font-medium">sm.shruthi2004@gmail.com</a>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-phone text-blue-600 text-2xl"></i>
+                        <span class="text-gray-700 text-lg font-medium">8105534240</span>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6">
+                    <a href="https://www.linkedin.com/in/shruthi-s-523091259" target="_blank" rel="noopener noreferrer" class="icon-link">
+                        <i class="fab fa-linkedin text-4xl"></i>
+                    </a>
+                    <a href="https://github.com/shru2004" target="_blank" rel="noopener noreferrer" class="icon-link">
+                        <i class="fab fa-github text-4xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 px-4 md:px-8 lg:px-16 text-center rounded-t-3xl shadow-xl">
+        <p class="text-sm">&copy; 2025 Shruthi S. All rights reserved.</p>
+        <p class="text-xs mt-2 opacity-75">Designed and developed with &#x2764;&#xfe0f; for a unique web presence.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            window.addEventListener('scroll', function() {
+                let scrollPosition = window.pageYOffset;
+                
+                parallaxElements.forEach(function(element) {
+                    element.style.backgroundPositionY = (scrollPosition * 0.5) + 'px';
+                });
+            });
+            
+            // Animate quotes on scroll
+            const quotes = document.querySelectorAll('.quote');
+            
+            const quoteObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            quotes.forEach(quote => {
+                quoteObserver.observe(quote);
+            });
+            
+            // Animate skill icons on scroll
+            const skillIcons = document.querySelectorAll('.skill-icon, .skill-badge');
+            
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            skillIcons.forEach(icon => {
+                icon.style.opacity = 0;
+                icon.style.transform = 'translateY(20px)';
+                icon.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                skillObserver.observe(icon);
+            });
+        });
+    </script>
+</body>
+</html>
