@@ -9,7 +9,7 @@ I am a proactive and analytical Computer Science Engineer with a specialization 
 ## Live Demo
 
 You can view the live portfolio website here:
-[https://shru2004.github.io/MY-PORTFOLIO/](https://shru2004.github.io/Portfolio/)
+[https://shru2004.github.io/Portfolio/](https://shru2004.github.io/Portfolio/)
 
 ## Features
 
